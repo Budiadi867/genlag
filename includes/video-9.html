@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adult Video Catalog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000000;
+      color: #ffffff;
+    }
+    .nav-link {
+      transition: background-color 0.3s ease;
+      color: #ffffff;
+    }
+    .nav-link:hover {
+      background-color: #4b5563; /* Tailwind gray-600 */
+      color: white;
+    }
+    .btn-xxx {
+      background-color: #374151; /* Tailwind gray-700 */
+      color: white;
+      font-weight: 600;
+    }
+    .btn-xxx:hover {
+      background-color: #1f2937; /* Tailwind gray-800 */
+    }
+    .video-container {
+      max-width: 720px;
+      margin: 0 auto;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #111827; /* Tailwind gray-900 */
+      position: relative;
+    }
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.3);
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+    }
+    .play-overlay:hover {
+      background: rgba(255,255,255,0.5);
+    }
+    .play-icon {
+      border-style: solid;
+      border-width: 10px 0 10px 16px;
+      border-color: transparent transparent transparent white;
+      margin-left: 4px;
+    }
+    .metadata {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 12px 0;
+      background: #1f2937; /* Tailwind gray-800 */
+      font-size: 0.875rem;
+      color: #d1d5db; /* Tailwind gray-300 */
+      border-top: 1px solid #374151; /* Tailwind gray-700 */
+      border-bottom: 1px solid #374151;
+      user-select: none;
+    }
+    .metadata-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .quality-btn {
+      background: #374151; /* Tailwind gray-700 */
+      border: 1px solid #4b5563; /* Tailwind gray-600 */
+      border-radius: 4px;
+      padding: 2px 8px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #d1d5db; /* Tailwind gray-300 */
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    .quality-btn:hover {
+      background-color: #4b5563; /* Tailwind gray-600 */
+    }
+    .quality-btn.active {
+      background-color: #ef4444; /* Tailwind red-500 */
+      color: white;
+      border-color: #ef4444;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Navigation Bar -->
+  <nav class="flex justify-center gap-2 text-sm font-semibold py-2 bg-white shadow-sm select-none">
+    <a href="#" class="nav-link px-3 py-1 rounded text-gray-700 hover:bg-gray-200">TOP</a>
+    <a href="#" class="nav-link btn-xxx px-3 py-1 rounded">XXX video</a>
+    <a href="#" class="nav-link px-3 py-1 rounded text-gray-700 hover:bg-gray-200">18+</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-grow container mx-auto px-4 py-8">
+    <h1 class="text-center text-2xl font-bold mb-6 select-none">Adult Video Catalog</h1>
+
+    <!-- Video Player Container -->
+    <div class="video-container relative">
+      <img src="https://menyokbro.eu.org/img/preview_1.jpeg" alt="Video Thumbnail" class="w-full h-auto block" />
+      <div class="play-overlay" onclick="alert('Play video clicked!')">
+        PLAY
+        <span class="play-icon"></span>
+      </div>
+    </div>
+
+    <!-- Metadata -->
+    <div class="metadata mt-3 select-none">
+      <div class="metadata-item" title="Views">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+        52 809
+      </div>
+      <div class="metadata-item" title="Added date">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7a2 2 0 002 2z" />
+        </svg>
+        Added by: 22.10.2017
+      </div>
+      <div class="metadata-item">
+        <button class="quality-btn" aria-pressed="false">720p</button>
+        <button class="quality-btn active" aria-pressed="true">480p</button>
+        <button class="quality-btn" aria-pressed="false">360p</button>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
